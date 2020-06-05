@@ -1,0 +1,1 @@
+INSERT INTO RUGE.user (id, avatar, create_time, email, nickname, password, type, update_time, username) VALUES (1, 'https://img2.woyaogexing.com/2020/05/26/6e9835aa7f6246e5810b0a620eda6297!400x400.jpeg', '2020-06-05 10:47:09', '13298899809@163.com', '嘿丷如歌', '123456', '1', '2020-06-05 10:47:50', 'admin');
