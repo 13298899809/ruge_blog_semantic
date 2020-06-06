@@ -4,11 +4,11 @@ import com.ruge.ruge_blog_semantic.domain.entitys.Comment;
 import com.ruge.ruge_blog_semantic.repository.CommentRepository;
 import com.ruge.ruge_blog_semantic.service.CommentService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 public class CommentServiceImpl implements CommentService {
 
-    @Autowired
+    @Resource
     private CommentRepository commentRepository;
 
     @Override

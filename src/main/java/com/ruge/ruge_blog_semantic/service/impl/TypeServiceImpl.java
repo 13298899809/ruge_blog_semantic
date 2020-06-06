@@ -4,7 +4,6 @@ import com.ruge.ruge_blog_semantic.domain.entitys.Type;
 import com.ruge.ruge_blog_semantic.repository.TypeRepository;
 import com.ruge.ruge_blog_semantic.service.TypeService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -23,32 +23,51 @@ import java.util.List;
 @Service
 public class TypeServiceImpl implements TypeService {
 
-    @Autowired
+    @Resource
     private TypeRepository typeRepository;
 
+    /**
+     * @param type {@link Type}
+     * @return type保存
+     */
     @Transactional
     @Override
     public Type saveType(Type type) {
         return typeRepository.save(type);
     }
 
+    /**
+     * @param id id
+     * @return 获取type
+     */
     @Transactional
     @Override
     public Type getType(Long id) {
         return typeRepository.findById(id).get();
     }
 
+    /**
+     * @param name 类型名称
+     * @return 通过类型名称查询
+     */
     @Override
     public Type getTypeByName(String name) {
         return typeRepository.findByName(name);
     }
 
+    /**
+     * @param pageable {@link Pageable}
+     * @return 分页查询type
+     */
     @Transactional
     @Override
     public Page<Type> listType(Pageable pageable) {
         return typeRepository.findAll(pageable);
     }
 
+    /**
+     * @return 查询全部
+     */
     @Override
     public List<Type> listType() {
         return typeRepository.findAll();
@@ -62,7 +81,11 @@ public class TypeServiceImpl implements TypeService {
         return typeRepository.findTop(pageable);
     }
 
-
+    /**
+     * 修改类型
+     *
+     * @param type {@link Type}
+     */
     @Transactional
     @Override
     public void updateType(Long id, Type type) {
@@ -72,7 +95,11 @@ public class TypeServiceImpl implements TypeService {
         });
     }
 
-
+    /**
+     * 删除type
+     *
+     * @param id id
+     */
     @Transactional
     @Override
     public void deleteType(Long id) {

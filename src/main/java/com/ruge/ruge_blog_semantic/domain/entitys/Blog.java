@@ -2,6 +2,8 @@ package com.ruge.ruge_blog_semantic.domain.entitys;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,34 +22,36 @@ import java.util.List;
 public class Blog {
     @Id
     @GeneratedValue
-    @Column(nullable = false,columnDefinition = "INTEGER comment '主键'")
+    @Column(nullable = false, columnDefinition = "INTEGER comment '主键'")
     private Long id;
-    @Column(nullable = false,columnDefinition = "VARCHAR(50) default '' comment '标题'")
+    @Column(nullable = false, columnDefinition = "VARCHAR(50) default '' comment '标题'")
     private String title;
     @Basic(fetch = FetchType.LAZY)
     @Lob
-    @Column(nullable = false,columnDefinition = "BLOB  comment '博客内容'")
+    @Column(nullable = false, columnDefinition = "BLOB  comment '博客内容'")
     private String content;
-    @Column(nullable = false,columnDefinition = "BLOB  comment '首图'")
+    @Column(nullable = false, columnDefinition = "BLOB  comment '首图'")
     private String firstPicture;
-    @Column(nullable = false,columnDefinition = "VARCHAR(50) default '' comment '标记'")
+    @Column(nullable = false, columnDefinition = "VARCHAR(50) default '' comment '标记'")
     private String flag;
-    @Column(nullable = false,columnDefinition = "INTEGER default '0' comment '浏览次数'")
-    private Integer views;
-    @Column(nullable = false,columnDefinition = "BIT(1) default b'1' comment '赞赏开启'")
+    @Column(nullable = false, columnDefinition = "INTEGER default '0' comment '浏览次数'")
+    private int views;
+    @Column(nullable = false, columnDefinition = "BIT(1) default b'1' comment '赞赏开启'")
     private boolean appreciation;
-    @Column(nullable = false,columnDefinition = "BIT(1) default b'1' comment '版权开启'")
+    @Column(nullable = false, columnDefinition = "BIT(1) default b'1' comment '版权开启'")
     private boolean shareStatement;
-    @Column(nullable = false,columnDefinition = "BIT(1) default b'1' comment '评论开启'")
+    @Column(nullable = false, columnDefinition = "BIT(1) default b'1' comment '评论开启'")
     private boolean commentabled;
-    @Column(nullable = false,columnDefinition = "BIT(1) default b'1' comment '是否发布'")
+    @Column(nullable = false, columnDefinition = "BIT(1) default b'1' comment '是否发布'")
     private boolean published;
-    @Column(nullable = false,columnDefinition = "BIT(1) default b'1' comment '是否推荐'")
+    @Column(nullable = false, columnDefinition = "BIT(1) default b'1' comment '是否推荐'")
     private boolean recommend;
-    @Column(nullable = false,columnDefinition = "BIT(1) default b'1' comment '是否推荐'")
+
     @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date updateTime;
     @ManyToOne
     private Type type;

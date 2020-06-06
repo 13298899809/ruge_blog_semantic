@@ -8,7 +8,6 @@ import com.ruge.ruge_blog_semantic.service.BlogService;
 import com.ruge.ruge_blog_semantic.util.MarkdownUtils;
 import com.ruge.ruge_blog_semantic.util.MyBeanUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +16,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import javax.persistence.criteria.*;
 import java.util.*;
 
@@ -30,7 +30,7 @@ import java.util.*;
 public class BlogServiceImpl implements BlogService {
 
 
-    @Autowired
+    @Resource
     private BlogRepository blogRepository;
 
     @Override
@@ -115,17 +115,13 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.count();
     }
 
-
+    /**
+     * @param blog {@link Blog}
+     * @return 博客保存
+     */
     @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
-        if (blog.getId() == null) {
-            blog.setCreateTime(new Date());
-            blog.setUpdateTime(new Date());
-            blog.setViews(0);
-        } else {
-            blog.setUpdateTime(new Date());
-        }
         return blogRepository.save(blog);
     }
 

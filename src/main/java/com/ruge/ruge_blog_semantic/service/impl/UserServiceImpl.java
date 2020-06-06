@@ -4,8 +4,9 @@ import com.ruge.ruge_blog_semantic.domain.entitys.User;
 import com.ruge.ruge_blog_semantic.repository.UserRepository;
 import com.ruge.ruge_blog_semantic.service.UserService;
 import com.ruge.ruge_blog_semantic.util.MD5Utils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author ruge.wu
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     @Override

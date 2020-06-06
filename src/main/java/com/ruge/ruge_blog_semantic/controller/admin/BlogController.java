@@ -6,7 +6,6 @@ import com.ruge.ruge_blog_semantic.domain.vo.BlogQuery;
 import com.ruge.ruge_blog_semantic.service.BlogService;
 import com.ruge.ruge_blog_semantic.service.TagService;
 import com.ruge.ruge_blog_semantic.service.TypeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -35,11 +35,11 @@ public class BlogController {
     private static final String REDIRECT_LIST = "redirect:/admin/blogs";
 
 
-    @Autowired
+    @Resource
     private BlogService blogService;
-    @Autowired
+    @Resource
     private TypeService typeService;
-    @Autowired
+    @Resource
     private TagService tagService;
 
     @GetMapping("/blogs")

@@ -27,7 +27,7 @@ public class Comment {
     private String email;
     @Column(nullable = false,columnDefinition = "VARCHAR(50) default '' comment '评论内容'")
     private String content;
-    @Column(nullable = false,columnDefinition = "VARCHAR(50) default '' comment '评论头像'")
+    @Column(nullable = false,columnDefinition = "VARCHAR(255) default '' comment '评论头像'")
     private String avatar;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
